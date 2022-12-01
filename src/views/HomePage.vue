@@ -108,7 +108,7 @@
                 </p>
               </div>
               <div class="col-sm-3 text-align-center">
-                <p class="value3 mt-sm">{{ item.rating }}</p>
+                <p class="value3 mt-sm">Rating - {{ item.rating }}</p>
                 <a
                   v-if="user_id"
                   class="btn btn-primary btn-info btn-sm"
