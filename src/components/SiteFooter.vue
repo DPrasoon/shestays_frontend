@@ -13,14 +13,14 @@
 
       <div class="row justify-content-around text-center text-md-start">
         <div class="col-md-2 text-center">
-          <h1 class="fw-bold mt-3"><a href="/admin_panel" class="text-decoration-none text-white">SS</a></h1>
+          <h1 class="fw-bold mt-3"><router-link to="/admin_panel" class="text-decoration-none text-white">SS</router-link></h1>
           <h4>SheStays</h4>
         </div>
         <div class="col-md-2">
           <ul class="list-unstyled">
             <li class="fw-bold my-2">Partnership</li>
             <li>
-              <a href="/" class="text-decoration-none text-white">Website</a>
+              <router-link to="/" class="text-decoration-none text-white">Website</router-link>
             </li>
             <li>
               <a href="https://github.com/DPrasoon/SheStays" class="text-decoration-none text-white">
@@ -28,7 +28,7 @@
               >
             </li>
             <li>
-              <a href="/about" class="text-decoration-none text-white">Branding</a>
+              <router-link to="/about" class="text-decoration-none text-white">Branding</router-link>
             </li>
           </ul>
         </div>
@@ -36,12 +36,12 @@
           <ul class="list-unstyled">
             <li class="fw-bold my-2">About</li>
             <li>
-              <a href="/about" class="text-decoration-none text-white"
-                >Our Project</a
+              <router-link to="/about" class="text-decoration-none text-white"
+                >Our Project</router-link
               >
             </li>
             <li>
-              <a href="/about" class="text-decoration-none text-white">Careers</a>
+              <router-link to="/about" class="text-decoration-none text-white">Careers</router-link>
             </li>
           </ul>
         </div>
@@ -49,12 +49,11 @@
           <ul class="list-unstyled">
             <li class="fw-bold my-2">Support</li>
             <li>
-              <a href="/contact" class="text-decoration-none text-white">Contact</a>
+              <router-link to="/contact" class="text-decoration-none text-white">Contact</router-link>
             </li>
             <li>
-              <a href="/feedback" class="text-decoration-none text-white"
-                >Feedback</a
-              >
+              <router-link to="/feedback" class="text-decoration-none text-white"
+                >Feedback</router-link>
             </li>
           </ul>
         </div>
@@ -89,7 +88,7 @@
       <div class="row">
         <div class="col-md-12 text-center pt-2">
           <p>
-            &copy; 2022 Copyright <a href="/" class="text-white">SheStays</a>
+            &copy; 2022 Copyright <router-link to="/" class="text-white">SheStays</router-link>
           </p>
         </div>
       </div>
