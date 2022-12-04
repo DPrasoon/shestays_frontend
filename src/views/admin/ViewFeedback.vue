@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>View Feedback</h1>
-    <div class="container">
-      <button @click="getData">Load Feedback</button><br />
-      <table class="table">
+    <h1 class="fw-bold mt-4 mb-4">View Feedbacks</h1>
+    <div class="container-fluid">
+      <button class="btn-lg btn btn-secondary mb-5" @click="getData">Load Feedback</button><br />
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -18,8 +18,8 @@
             <th scope="row">{{item.name}}</th>
             <td>{{item.email}}</td>
             <td>{{item.feedback}}</td>
-            <td>@{{item.rating}}</td>
-            <td><button @click.prevent="deleteFeedback(item._id)">Delete</button></td>
+            <td>{{item.rating}}</td>
+            <td><button class="btn btn-outline-danger fw-bold" v-if="item._id" @click="deleteFeedback(item._id)">Delete</button></td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +42,6 @@ export default {
       axios
         .get("admin/view_feedback")
         .then((response) => {
-          console.log(response.data);
           this.data = response.data;
         })
         .catch((error) => {
@@ -53,8 +52,8 @@ export default {
       axios
           .delete("admin/delete_feedback/"+feedback_id)
           .then((response) => {
-            console.log(response.data);
             this.data = response.data;
+            alert("Feedback deleted.");
           })
           .catch((error) => {
             console.log(error);

@@ -22,53 +22,14 @@
                 ><i class="bi bi-house-fill me-2"></i>Home</router-link
               >
             </li>
-            <li class="nav-item dropdown rounded">
-              <router-link
-                class="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Login
-              </router-link>
-              <ul class="dropdown-menu bg-dark">
-                <!-- <li>
-                  <router-link
-                    class="dropdown-item rounded text-light"
-                    to="login_user"
-                    >User</router-link
-                  >
-                </li> -->
-                <li>
-                  <router-link
-                    class="dropdown-item rounded text-light"
-                    to="login_AM"
-                    >Area Manager</router-link
-                  >
-                </li>
-              </ul>
-            </li>
 
-            <li class="nav-item dropdown rounded">
+            <li class="nav-item rounded">
               <router-link
-                class="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                class="nav-link"
+                aria-current="page"
+                to="registration_user"
+                ><i class="bi bi-house-fill me-2"></i>SignUp</router-link
               >
-                Registration
-              </router-link>
-              <ul class="dropdown-menu bg-dark">
-                <li>
-                  <router-link
-                    class="dropdown-item rounded text-light"
-                    to="registration_user"
-                    >User</router-link
-                  >
-                </li>
-              </ul>
             </li>
 
             <li class="nav-item rounded">
@@ -86,10 +47,18 @@
                 ><i class="bi bi-house-fill me-2"></i>Feedback</router-link
               >
             </li>
+            <li class="nav-item rounded">
+              <router-link class="nav-link" aria-current="page" to="login_AM"
+                ><i class="bi bi-house-fill me-2"></i>AM Sign-In</router-link
+              >
+            </li>
           </ul>
         </div>
-        <button class="btn btn-outline-light text-light" data-bs-toggle="modal"
-                  data-bs-target="#ModalForm">
+        <button
+          class="btn btn-outline-light text-light me-3"
+          data-bs-toggle="modal"
+          data-bs-target="#ModalForm"
+        >
           Login
         </button>
       </div>

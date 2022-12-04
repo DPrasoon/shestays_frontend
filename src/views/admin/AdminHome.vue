@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h1>Admin Home</h1>
-    <div class="container">
-      AM Queries
-      <button @click="getData">Load Queries and Messages</button><br />
+    <h1 class="fw-bold  mb-4 text-white bg-secondary">
+      Admin Dashboard
+    </h1>
+    <div class="container-fluid">
+      <h2 class="fw-bold mt-1 mb-2">Queries</h2>
+      <button class="btn btn btn-secondary mb-5"  @click="getData">Load Queries and Messages</button><br />
       <table class="table">
         <thead>
           <tr>
@@ -14,11 +16,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for ="item in data" :key="item._id">
-            <th scope="row">{{item.am_id}}</th>
-            <td>{{item.name}}</td>
-            <td>{{item.email}}</td>
-            <td>@{{item.query}}</td>
+          <tr v-for="item in data" :key="item._id">
+            <th scope="row">{{ item.am_id }}</th>
+            <td>{{ item.name }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.query }}</td>
           </tr>
         </tbody>
       </table>
@@ -41,7 +43,6 @@ export default {
       axios
         .get("admin/view_queries")
         .then((response) => {
-          console.log(response.data);
           this.data = response.data;
         })
         .catch((error) => {

@@ -3,9 +3,8 @@
     <h1 style="text-align: center">Add new Area Manager</h1>
     <section>
       <div class="container">
-        <form>
+        <form @submit.prevent="addAM">
           <fieldset>
-
             <div class="form-group">
               <label for="txtfname">Full Name</label><br />
               <input
@@ -146,7 +145,7 @@
           </fieldset>
           <br />
 
-          <button type="submit" id="btnSubmit" @click="addAM">Submit</button>
+          <button type="submit" id="btnSubmit">Submit</button>
           <button type="reset" id="btnReset">Reset</button>
         </form>
       </div>
@@ -182,6 +181,7 @@ export default {
         .post("admin/am_registration", this.formData)
         .then((response) => {
           console.log(response.data);
+          alert("New Area Mananger added.");
         })
         .catch((error) => {
           console.log(error);

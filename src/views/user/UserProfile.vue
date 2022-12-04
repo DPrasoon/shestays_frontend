@@ -4,6 +4,8 @@
     <button @click="getData" class="btn btn-info mt-4 mb-4">
       Get My Details
     </button>
+    <form @submit.prevent="updateData">
+      <!-- Email start  -->
       <div class="row g-3 align-items-center mb-3 ml-23">
         <div class="col-2">
           <label for="txtemail" class="col-form-label">Email</label>
@@ -37,6 +39,7 @@
             id="txtphone"
             class="form-control"
             aria-describedby="phoneHelpInline"
+            required
           />
         </div>
         <div class="col-auto">
@@ -58,6 +61,7 @@
             id="inputPassword"
             class="form-control"
             aria-describedby="passwordHelpInline"
+            required
           />
         </div>
         <div class="col-auto">
@@ -67,9 +71,12 @@
         </div>
       </div>
       <!-- Password End  -->
-      <button class="btn btn-lg btn-secondary" @click="updateData">Update</button>
-      <hr />
-      <button class="btn btn-outline-danger btn-lg" @click="logout" >Logout</button>
+      <button class="btn btn-lg btn-secondary" type="submit">Update</button>
+    </form>
+    <hr />
+    <button class="btn btn-outline-danger btn-lg" @click="logout">
+      Logout
+    </button>
   </div>
 </template>
 
@@ -91,7 +98,6 @@ export default {
         .get("common/get_user_detail/" + this.user_id)
         .then((response) => {
           this.user_data = response.data[0];
-          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -102,8 +108,8 @@ export default {
       axios
         .put("common/update", this.user_data)
         .then((response) => {
-          console.log(response.data);
           this.data = response.data;
+          alert("Data Updated");
         })
         .catch((error) => {
           console.log(error);

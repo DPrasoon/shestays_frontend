@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>View AMs</h1>
-    <div class="container">
-      <button @click="getData">Load AM Profiles</button><br />
-      <table class="table">
+    <h1 class="fw-bold mt-4 mb-4">View Area Manager Profiles</h1>
+    <div class="container-fluid">
+      <button class="btn-lg btn btn-secondary mb-5" @click="getData">Load AM Profiles</button><br />
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -11,7 +11,7 @@
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
             <th scope="col">City</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Remove AM</th>
           </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
             <td>{{item.email}}</td>
             <td>{{item.phone}}</td>
             <td>{{item.city}}</td>
-            <td><button @click="deleteAM(item._id)">Delete</button></td>
+            <td><button class="btn btn-outline-danger fw-bold" v-if="item._id" @click="deleteAM(item._id)">Delete</button></td>
           </tr>
         </tbody>
       </table>
@@ -44,7 +44,6 @@ export default {
       axios
         .get("admin/view_am_profiles")
         .then((response) => {
-          console.log(response.data);
           this.data = response.data;
         })
         .catch((error) => {
@@ -57,19 +56,14 @@ export default {
           .then((response) => {
             console.log(response.data);
             this.data = response.data;
+            alert("Area Manager removed from Database.");
           })
           .catch((error) => {
             console.log(error);
           });
     }
   },
-  // mounted(){
-  //   getData();
-  // }
 };
-// onMounted(() => {
-//   getData();
-//   })
 </script>
 
 <style>

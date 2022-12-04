@@ -1,13 +1,13 @@
 <template>
     <div class="text-center">
-      <main class="form-signin w-100 m-auto">
-        <form>
+      <main class="form-signin w-100 m-auto m-auto">
+        <form @submit.prevent="getData">
           <img
-            class="mb-4"
+            class="mb-4 mt-5 pt-3"
             src="../../assets/logo.png"
             alt=""
-            width="72"
-            height="57"
+            width="128"
+            height="140"
           />
           <h1 class="h3 mb-3 fw-normal">Admin Panel</h1>
   
@@ -18,6 +18,7 @@
               id="floatingInput"
               placeholder="name@example.com"
               v-model="logindata.email"
+              required
             />
             <label for="floatingInput">Email address</label>
           </div>
@@ -28,19 +29,14 @@
               id="floatingPassword"
               placeholder="Password"
               v-model="logindata.password"
+              required
             />
             <label for="floatingPassword">Password</label>
           </div>
-  
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" @click.prevent="getData">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">
             Sign in
           </button>
-          <p class="mt-5 mb-3 text-muted">© 2023</p>
+          <p class="mt-5 mb-3 text-muted">© 2022</p>
         </form>
       </main>
     </div>
@@ -49,7 +45,7 @@
   <script>
   import axios from "axios";
   export default {
-    name: "LoginAM",
+    name: "Admin_Panel",
     data() {
       return {
         error: "",
@@ -61,10 +57,8 @@
         axios
           .get("admin/get/"+this.logindata.email)
           .then((response) => {
-            console.log(response.data[0].password);
             if(response.data[0].password == this.logindata.password)
             {
-              console.log("Login Success")
               localStorage.setItem("admin_token",true);
               localStorage.setItem("admin_id",response.data[0]._id);
               this.$router.push('/admin_home');

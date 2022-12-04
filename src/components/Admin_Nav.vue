@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <router-link class="navbar-brand" to="#"></router-link>
+        <router-link class="navbar-brand" to="/"></router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
             <li class="nav-item rounded">
-              <router-link class="nav-link active" aria-current="page" to=""
+              <router-link class="nav-link active" aria-current="page" to="/admin_home"
                 ><i class="bi bi-house-fill me-2"></i>Home</router-link
               >
             </li>
@@ -64,7 +64,7 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-outline-light text-light" @click="logout">
+        <button class="btn btn-outline-light text-light me-3" @click="logout">
           Logout
         </button>
       </div>

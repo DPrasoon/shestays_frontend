@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>View User Profiles</h1>
-    <div class="container">
-      <button @click="getData">Load User Profiles</button><br />
-      <table class="table">
+    <h1 class="fw-bold mt-4 mb-4">View User Profiles</h1>
+    <div class="container-fluid">
+      <button class="btn-lg btn btn-secondary mb-5" @click="getData">Load User Profiles</button><br />
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -23,7 +23,7 @@
             <td>{{item.phone}}</td>
             <td>{{item.city}}</td>
             <td>{{item.address_line1+", "+item.address_line2+", "+item.address_line3+", "+item.city+", "+item.pincode+", "+item.country}}</td>
-            <td><button @click="deleteUser(item._id)">Delete</button></td>
+            <td><button class="btn btn-outline-danger fw-bold" v-if="item._id" @click="deleteUser(item._id)">Delete</button></td>
           </tr>
         </tbody>
       </table>
@@ -46,7 +46,6 @@ export default {
       axios
         .get("admin/view_user_profiles")
         .then((response) => {
-          console.log(response.data);
           this.data = response.data;
         })
         .catch((error) => {
@@ -56,8 +55,8 @@ export default {
       axios
           .delete("admin/delete_user/"+user_id)
           .then((response) => {
-            console.log(response.data);
             this.data = response.data;
+            alert("User removed from Database.");
           })
           .catch((error) => {
             console.log(error);

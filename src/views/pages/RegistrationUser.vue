@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1 style="text-align: center">Registration Form</h1>
+    <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">Registration Form</h1>
     <section class="pb-5 pt-3">
       <div class="container">
-        <form>
+        <form @submit.prevent="addUser">
           <fieldset>
             <legend>Personal Information</legend>
 
             <div class="form-group">
-              <label for="txtfname">First Name</label><br />
+              <label class="fw-bold" for="txtfname">First Name</label><br />
               <input
                 type="text"
                 id="txtfname"
@@ -22,7 +22,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtmname">Middle Name</label><br />
+              <label class="fw-bold" for="txtmname">Middle Name</label><br />
               <input
                 type="text"
                 id="txtmname"
@@ -35,7 +35,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtlname">Last Name</label><br />
+              <label class="fw-bold" for="txtlname">Last Name</label><br />
               <input
                 type="text"
                 v-model="formData.last_name"
@@ -49,7 +49,7 @@
             <br />
 
             <div class="form-group">
-              <label for="rdgender">Gender</label>
+              <label class="fw-bold" for="rdgender">Gender</label>
             </div>
             <br />
             <input
@@ -87,7 +87,7 @@
             <legend>Contact Information</legend>
 
             <div class="form-group">
-              <label for="txtmail">Email</label><br />
+              <label class="fw-bold" for="txtmail">Email</label><br />
               <input
                 type="email"
                 id="txtmail"
@@ -101,7 +101,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtphone">Phone Number</label><br />
+              <label class="fw-bold" for="txtphone">Phone Number</label><br />
               <input
                 type="number"
                 id="txtphone"
@@ -115,7 +115,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtaddr1">Address Line 1</label><br />
+              <label class="fw-bold" for="txtaddr1">Address Line 1</label><br />
               <input
                 type="text"
                 id="txtaddr1"
@@ -129,7 +129,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtaddr2">Address Line 2</label><br />
+              <label class="fw-bold" for="txtaddr2">Address Line 2</label><br />
               <input
                 type="text"
                 id="txtaddr2"
@@ -143,7 +143,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtaddr3">Address Line 3</label><br />
+              <label class="fw-bold" for="txtaddr3">Address Line 3</label><br />
               <input
                 type="text"
                 v-model="formData.address_line3"
@@ -156,7 +156,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtpin">Pin Code</label><br />
+              <label class="fw-bold" for="txtpin">Pin Code</label><br />
               <input
                 type="number"
                 id="txtpin"
@@ -169,7 +169,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtcity">City</label><br />
+              <label class="fw-bold" for="txtcity">City</label><br />
               <input
                 type="text"
                 id="txtcity"
@@ -183,7 +183,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtstate">State</label><br />
+              <label class="fw-bold" for="txtstate">State</label><br />
               <input
                 type="text"
                 id="txtstate"
@@ -197,7 +197,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtcountry">Country</label><br />
+              <label class="fw-bold" for="txtcountry">Country</label><br />
               <input
                 type="text"
                 id="txtcountry"
@@ -211,15 +211,15 @@
             <br />
           </fieldset>
           <br />
-          <div id="chkCond">
+          <!-- <div id="chkCond">
             <input type="checkbox" id="chkCond" name="chkCond" required />
-            <label for="chckCond"
+            <label class="fw-bold" for="chckCond"
               >I accept all the <a href="#">terms and condtions.</a></label
             >
           </div>
-          <br />
+          <br /> -->
 
-          <button type="submit" id="btnSubmit" @click="addUser">Submit</button>
+          <button type="submit" id="btnSubmit">Submit</button>
           <button type="reset" id="btnReset">Reset</button>
         </form>
       </div>
@@ -256,11 +256,12 @@ export default {
     addUser() {
       axios
         .post("common/user_registration", this.formData)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          alert("You are registered. Your default Password is 12345. Please update it after signing in for the first time.");
         })
         .catch((error) => {
           console.log(error);
+          alert("Invalid credentials.");
         });
     },
   },
@@ -289,9 +290,7 @@ section {
     to right top,
     #051937,
     #004d7a,
-    #008793,
-    #00bf72,
-    #a8eb12
+    #008793
   );
 }
 

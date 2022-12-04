@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
             <li class="nav-item rounded">
-              <router-link class="nav-link active" aria-current="page" to="/"
+              <router-link class="nav-link active" aria-current="page" to="/am_home"
                 ><i class="bi bi-house-fill me-2"></i>Home</router-link
               >
             </li>
@@ -30,33 +30,9 @@
                 ><i class="bi bi-house-fill me-2"></i>Requests</router-link
               >
             </li>
-            <li class="nav-item rounded">
-              <router-link
-                class="nav-link"
-                aria-current="page"
-                to="/am_home/add_area_review"
-                ><i class="bi bi-house-fill me-2"></i>Add Review</router-link
-              >
-            </li>
-            <li class="nav-item rounded">
-              <router-link
-                class="nav-link"
-                aria-current="page"
-                to="/am_home/add_area_contacts"
-                ><i class="bi bi-house-fill me-2"></i>Add Contacts</router-link
-              >
-            </li>
-            <li class="nav-item rounded">
-              <router-link
-                class="nav-link"
-                aria-current="page"
-                to="/am_home/am_profile"
-                ><i class="bi bi-house-fill me-2"></i>My Profile</router-link
-              >
-            </li>
           </ul>
         </div>
-        <button class="btn btn-outline-light text-light" @click="logout">
+        <button class="btn btn-outline-light text-light me-3" @click="logout">
           Logout
         </button>
       </div>

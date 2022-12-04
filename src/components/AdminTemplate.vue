@@ -2,19 +2,19 @@
   <div>
     <Admin_Nav />
     <router-view/>
-    <!-- footer -->
-    <!-- <div class="bg-dark text-white footer">
-      <p class="text-center p-4 m-0">Footer Content</p>
-    </div> -->
+    <SiteFooter/>
   </div>
 </template>
 
 <script>
 import Admin_Nav from "./Admin_Nav.vue";
+import SiteFooter from './SiteFooter.vue';
 export default {
   name: "AdminTemplate",
   components: {
-    Admin_Nav,
+    Admin_Nav,SiteFooter
   },
 };
 </script>
+
+<style scoped>

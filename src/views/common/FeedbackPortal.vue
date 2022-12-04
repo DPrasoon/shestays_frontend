@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1 style="text-align: center">We value your feedback!</h1>
-    <section>
+    <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">We value your feedback!</h1>
+    <section class="pb-5 pt-3">
       <div class="container">
-        <form>
+        <form @submit.prevent="addFeedback">
           <fieldset>
             <div class="form-group">
-              <label for="txtfname">Name</label><br />
+              <label class = "fw-bold" for="txtfname">Name</label><br />
               <input
                 type="text"
                 id="txtname"
@@ -19,7 +19,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtmail">Email</label><br />
+              <label class = "fw-bold" for="txtmail">Email</label><br />
               <input
                 type="email"
                 id="txtmail"
@@ -33,7 +33,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtfeedback">Feedback</label><br />
+              <label class = "fw-bold" for="txtfeedback">Feedback</label><br />
               <textarea
                 class="form-control"
                 placeholder="Leave a comment here"
@@ -46,7 +46,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtmail">Ratings</label><br />
+              <label class = "fw-bold" for="txtmail">Rate Us</label><br />
               <select
                 class="form-select"
                 aria-label="Default select example"
@@ -64,7 +64,7 @@
             <br />
           </fieldset>
           <br />
-          <button type="submit" id="btnSubmit" @click="addFeedback">Submit</button>
+          <button type="submit" id="btnSubmit">Submit</button>
           <button type="reset" id="btnReset">Reset</button>
         </form>
       </div>
@@ -83,16 +83,17 @@ export default {
         name: "",
         email: "",
         feedback: "",
-        rating: "",   //---------------------------work on this
+        rating: "",
       },
     };
   },
   methods: {
     addFeedback() {
+      this.formData.rating = Math.random()*5; //to be removed
       axios
         .post("common/feedback", this.formData)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          alert("Thank you for your feedback!");
         })
         .catch((error) => {
           console.log(error);
@@ -124,9 +125,7 @@ section {
     to right top,
     #051937,
     #004d7a,
-    #008793,
-    #00bf72,
-    #a8eb12
+    #008793
   );
 }
 
@@ -191,7 +190,6 @@ textarea {
   font-family: "Montserrat";
   font-size: 18px;
   cursor: pointer;
-  /* text-align:right; */
 }
 
 #btnReset:hover,

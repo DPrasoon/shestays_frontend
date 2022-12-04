@@ -5,41 +5,40 @@
       <div class="container position-relative">
         <div class="row justify-content-center">
           <div class="col-xl-6">
-            <div
-              class=""
-            >
+            <div>
               <!-- Page heading-->
               <h1 class="fw-bold text-white brand">SheStays</h1>
-              <h3 class="mb-5 fw-bold text-white">The Female-only Accomodation Finder</h3>
+              <h3 class="mb-5 fw-bold text-white">
+                The Female-only Accomodation Finder
+              </h3>
               <!-- Search form-->
-              <form id="searchForm" class="mb-4">
-                <!-- Email address input-->
+              <form id="searchForm" class="mb-4" @submit.prevent="getData()">
+                <!-- City input-->
                 <div class="row">
                   <div class="col">
                     <input
                       class="form-control form-control-lg"
                       id="txtcity"
                       type="text"
-                      placeholder="Enter city name.."
+                      placeholder="Enter city name..."
                       v-model="search_item"
                     />
                   </div>
                   <div class="col-auto">
                     <button
-                      class="btn btn-primary btn-lg"
+                      class="btn btn-outline-light fw-bold btn-lg"
                       id="submitButton"
-                      @click.prevent="getData()"
+                      type="submit"
                     >
                       Submit
                     </button>
                   </div>
                 </div>
               </form>
-              <h2 class="text-danger">
-                We are present at
-              </h2>
+              <h2 class="text-danger">We are present at</h2>
               <h4 class="mb-5 text-light fw-bold">
-                Mumbai,&nbsp;&nbsp;Chennai,&nbsp;&nbsp;New Delhi,&nbsp;&nbsp;Pune,&nbsp;&nbsp;Bengaluru
+                Mumbai,&nbsp;&nbsp;Chennai,&nbsp;&nbsp;New
+                Delhi,&nbsp;&nbsp;Pune,&nbsp;&nbsp;Bengaluru
               </h4>
             </div>
           </div>
@@ -47,8 +46,9 @@
       </div>
     </header>
     <!-- Masthead ends  -->
+    <!-- Search Results start -->
     <div
-      class="accordion w-100 search-result-item"
+      class="accordion w-100 search-result-item bg-transparent"
       id="accordionExample"
       v-for="(item, index) in data"
       :key="index"
@@ -60,18 +60,18 @@
           class="carousel slide w-25 carousel_image"
           data-bs-ride="carousel"
         >
-          <div class="carousel-inner">
+          <div class="carousel-inner rounded-start">
             <div class="carousel-item active">
-              <img :src="item.image1" class="d-block w-100" alt="..." />
+              <img :src="item.image1" class="w-100 d-block" alt="..." />
             </div>
             <div class="carousel-item">
-              <img :src="item.image2" class="d-block w-100" alt="..." />
+              <img :src="item.image2" class="w-100 d-block" alt="..." />
             </div>
             <div class="carousel-item">
-              <img :src="item.image3" class="d-block w-100" alt="..." />
+              <img :src="item.image3" class="w-100 d-block" alt="..." />
             </div>
             <div class="carousel-item">
-              <img :src="item.image4" class="d-block w-100" alt="..." />
+              <img :src="item.image4" class="w-100 d-block" alt="..." />
             </div>
           </div>
           <button
@@ -97,29 +97,32 @@
         <!-- info start -->
         <div class="carousel_image w-75">
           <div class="search-result-item-body">
-            <div class="row">
+            <div class="row mt-2">
               <div class="col-sm-9">
-                <h4 class="search-result-item-heading">
-                  <a href="#">{{ item.property_name }}</a>
-                </h4>
-                <p class="info">{{ item.address }}</p>
-                <p class="description">
+                  <span class="search-result-item-heading my-3 fw-bold fs-3">{{ item.property_name }}</span>
+                  <span class="fw-bold text-success ms-2 fs-5">
+                    ( Rating - {{ item.rating }})</span
+                  >
+                <h4 class="info mb-3">{{ item.address }}</h4>
+                <p class="description fw-bold">
                   {{ item.about }}
                 </p>
               </div>
               <div class="col-sm-3 text-align-center">
-                <p class="value3 mt-sm">Rating - {{ item.rating }}</p>
                 <a
                   v-if="user_id"
-                  class="btn btn-primary btn-info btn-sm"
+                  class="btn mt-4 mb-3"
                   id="btnOwner"
                   @click="getOwnerInfo(item._id)"
                   >Get Owner Info</a
                 >
-                <hr />
+                <h4 class="mt-sm my-2">
+                  <span class="fw-bold text-danger"> Security Rating </span> -
+                  {{ item.security_rating }}
+                </h4>
                 <a
                   v-if="am_id"
-                  class="btn btn-primary btn-info btn-sm"
+                  class="btn btn-success my-3"
                   id="btnReview"
                   @click="addReview(item._id)"
                   >Add Review & Contact</a
@@ -132,7 +135,7 @@
         <!-- details start  -->
         <h2 class="accordion-header" id="headingOne">
           <button
-            class="accordion-button"
+            class="accordion-button fs-5 bg-details text-light"
             type="button"
             data-bs-toggle="collapse"
             :data-bs-target="'#collapseOne' + index"
@@ -148,22 +151,62 @@
           aria-labelledby="headingOne"
           data-bs-parent="#accordionExample"
         >
-          <div class="accordion-body">
-            <p>
-              Local Police Helpline Number - {{ item.local_police_contact }}
-            </p>
-            <p>Local Tiffin Services - {{ item.local_tiffin_service }}</p>
-            <p>
-              Local Water Supply Services -
-              {{ item.local_water_supply_service }}
-            </p>
-            <p class="fs-mini text-muted">Facilities - {{ item.facilities }}</p>
-            <p>Property Type- {{ item.property_type }}</p>
-            <p>Security Rating - {{ item.security_rating }}</p>
+          <div class="accordion-body row">
+            <div class="col-4 float-left ps-2">
+              <ul>
+                <li class="text-start">
+                  <h6>
+                    <i class="fa-solid fa-bell-concierge"></i
+                    ><span class="fw-bold"> Facilities </span> -
+                    {{ item.facilities }}
+                  </h6>
+                </li>
+                <li class="text-start">
+                  <h6>
+                    <i class="fa-solid fa-square-h"></i
+                    ><span class="fw-bold"> Property Type</span>-
+                    {{ item.property_type }}
+                  </h6>
+                </li>
+              </ul>
+            </div>
+            <div class="col-4 float-left ps-2">
+              <ul>
+                <li class="text-start">
+                  <h6>
+                    <i class="fa-solid fa-bowl-food"></i>
+                    <span class="fw-bold">
+                      Local Tiffin Services</span
+                    >
+                    - {{ item.local_tiffin_service }}
+                  </h6>
+                </li>
+                <li class="text-start">
+                  <h6>
+                    <i class="fa-solid fa-glass-water"></i>
+                    <span class="fw-bold"> Local Water Supply Services</span>
+                    -
+                    {{ item.local_water_supply_service }}
+                  </h6>
+                </li>
+              </ul>
+            </div>
+            <div class="col-4 float-left ps-2">
+              <ul>
+                <li class="text-start">
+                  <h6>
+                    <i class="fa-solid fa-building-shield"></i>
+                    <span class="fw-bold"> Local Police Helpline Number</span>
+                    - {{ item.local_police_contact }}
+                  </h6>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Search Results End -->
   </div>
 </template>
   
@@ -179,6 +222,7 @@ export default {
       user_id: "",
       item_id: "",
       am_id: "",
+      req_body:{},
     };
   },
   methods: {
@@ -186,29 +230,29 @@ export default {
       axios
         .get("accomodations/get/" + this.search_item)
         .then((response) => {
-          console.log(response.data);
-          this.data = response.data;
-          this.user_id = localStorage.getItem("user_id");
-          this.am_id = localStorage.getItem("am_id");
+          if (response.data.length != 0) {
+            this.data = response.data;
+            this.user_id = localStorage.getItem("user_id");
+            this.am_id = localStorage.getItem("am_id");
+            alert("Sign-in to get Contact details.");
+          } else {
+            alert("We are not currently present here. Exapanding Soon.");
+          }
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    getOwnerInfo(item_id) {
-      console.log("Inside Get Owner");
-
-      console.log("USer ID" + this.user_id);
-      console.log("ITem id" + item_id);
-      axios.post("am/ownerInfoReq", this.user_id);
+    getOwnerInfo(property_id) {
+      this.req_body.user_id= this.user_id;
+      this.req_body.item_id= property_id;
+      axios.post("am/ownerInfoReq", this.req_body);
       alert("Request Sent. You will be contacted soon.");
     },
     addReview(item_id) {
-      console.log("Item ID" + item_id);
-      console.log("AM ID" + this.am_id);
       if (this.am_id) {
         localStorage.setItem("item_id", item_id);
-        this.$router.push("/am_home/add_area_review");
+        this.$router.push("/am_home/add_area_info");
       } else {
         alert("AM need to SignIn");
       }
@@ -229,9 +273,12 @@ export default {
   display: flex;
   float: left;
 }
+.carousel-inner > .carousel-item > img {
+  margin: auto;
+}
 
 .carousel-item {
-  height: 180px;
+  height: 13rem;
 }
 
 .search-result-item {
@@ -240,14 +287,31 @@ export default {
   border-radius: 4px;
   display: block;
   overflow: hidden;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
 }
 
 .search-result-item:after,
 .search-result-item:before {
   content: " ";
   display: table;
+}
+
+#btnOwner{
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: linear-gradient(112deg,#ba5092,#df4976 98%) !important;
+}
+
+#btnOwner:hover{
+  background: -webkit-linear-gradient(
+    0deg,
+    hsla(323, 91%, 51%, 1) 0%,
+    hsla(329, 20%, 24%, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: 0.1rem solid #df4976;
 }
 
 .search-result-item:after {
@@ -279,10 +343,35 @@ export default {
 
 .search-result-item .description {
   font-size: 13px;
+  text-align: justify;
+  background: -webkit-linear-gradient(
+    0deg,
+    hsla(323, 91%, 51%, 1) 0%,
+    hsla(329, 20%, 24%, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.brand{
+.brand {
   font-size: 64px !important;
+}
+
+.bg-details {
+  background: #0f0c29;
+  background: linear-gradient(
+    90deg,
+    hsla(202, 71%, 27%, 1) 0%,
+    hsla(176, 45%, 66%, 1) 100%
+  );
+}
+
+.accordion-button{
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 header.masthead {

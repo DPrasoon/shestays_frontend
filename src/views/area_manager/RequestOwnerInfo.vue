@@ -1,11 +1,24 @@
 <template>
-  <div class="container">
-    <h1>Info Requests</h1>
-    <button @click="getData">Load Requests</button>
-    <div class="container" v-for = "item in data" :key="item._id">
-      <p>User Id =  {{item.user_id}}</p>
-      <p>Item Id = {{item.item_id}}</p>
-    </div>
+  <div class="container-fluid">
+    <h1 class="fw-bold am_heading text-white bg-secondary">
+      Area Manager Dashboard
+    </h1>
+    <h1 class="mt-3 bg-light fw-bold">Info Requests</h1>
+    <button @click="getData" class="btn btn-outline-dark btn-lg fw-bold mt-4">Load Requests</button>
+    <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Requested Item ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for ="item in data" :key="item._id">
+            <th scope="row">{{item.user_id}}</th>
+            <td>{{item.item_id}}</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </template>
 
@@ -24,7 +37,6 @@ export default {
       axios
         .get("am/view_owner_info_requests")
         .then((response) => {
-          console.log(response.data);
           this.data = response.data;
         })
         .catch((error) => {
@@ -36,5 +48,7 @@ export default {
 </script>
 
 <style>
-
+.am_heading{
+  margin-top: 4rem;
+}
 </style>

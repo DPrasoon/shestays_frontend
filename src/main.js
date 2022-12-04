@@ -8,6 +8,7 @@ Vue.config.productionTip = false;
 
 //setting base URL
 axios.defaults.baseURL='https://shestays.onrender.com/'
+// axios.defaults.baseURL='http://localhost:3000/'
 
 //area manager login
 var am_login_status = false;

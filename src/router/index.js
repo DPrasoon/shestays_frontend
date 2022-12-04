@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+//common
 import HomePage from '../views/HomePage.vue';
 import HomeTemplate from '../components/HomeTemplate.vue';
 
 // login
-import LoginUser from '../views/pages/LoginUser.vue';
 import LoginAM from '../views/pages/LoginAM.vue';
 
 // registration
@@ -30,9 +30,7 @@ import ViewFeedback from '../views/admin/ViewFeedback.vue';
 import AM_HomePage from '../views/area_manager/AM_HomePage.vue';
 import AM_HomeTemplate from '../components/AM_HomeTemplate.vue';
 import RequestOwnerInfo from '../views/area_manager/RequestOwnerInfo.vue';
-import AddAreaContacts from '../views/area_manager/AddAreaContacts.vue';
-import AddAreaReview from '../views/area_manager/AddAreaReview.vue';
-import AMProfile from '../views/area_manager/AMProfile.vue';
+import AddAreaInfo from '../views/area_manager/AddAreaInfo.vue';
 
 //user
 import UserProfile from '../views/user/UserProfile.vue';
@@ -43,7 +41,6 @@ const routes = [
   {
     path: '/', component: HomeTemplate, children: [
       { path: '', component: HomePage },
-      { path: 'login_user', component: LoginUser },
 
       { path: 'registration_user', component: RegistrationUser },
       { path: 'about', component: AboutUs },
@@ -53,9 +50,7 @@ const routes = [
       { path: 'admin_profile', component: AdminProfile },
       { path: 'view_am_profile', component: ViewAMProfile },
       { path: 'view_user_profile', component: ViewUserProfile },
-
       { path: 'login_am', component: LoginAM },
-
       { path: 'admin_panel', component: AdminPanel },
 
     ]
@@ -64,9 +59,7 @@ const routes = [
     path: '/am_home', component: AM_HomeTemplate, children: [
       { path: '', component: AM_HomePage, meta: { am_auth: true } },
       { path: 'info_requests', component: RequestOwnerInfo, meta: { am_auth: true } },
-      { path: 'add_area_contacts', component: AddAreaContacts, meta: { am_auth: true } },
-      { path: 'add_area_review', component: AddAreaReview, meta: { am_auth: true } },
-      { path: 'am_profile', component: AMProfile, meta: { am_auth: true } },
+      { path: 'add_area_info', component: AddAreaInfo, meta: { am_auth: true } },
 
     ]
   },

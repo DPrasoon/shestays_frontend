@@ -1,13 +1,13 @@
 <template>
   <div class="text-center">
     <main class="form-signin w-100 m-auto">
-      <form>
+      <form @submit.prevent="getData">
         <img
           class="mb-4 mt-5 pt-3"
           src="../../assets/logo.png"
           alt=""
-          width="72"
-          height="72"
+          width="128"
+          height="140"
         />
         <h1 class="h3 mb-3 fw-normal">Area Manager Login</h1>
 
@@ -18,6 +18,7 @@
             id="floatingInput"
             placeholder="name@example.com"
             v-model="logindata.email"
+            required
           />
           <label for="floatingInput">Email address</label>
         </div>
@@ -28,10 +29,11 @@
             id="floatingPassword"
             placeholder="Password"
             v-model="logindata.password"
+            required
           />
           <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" @click.prevent="getData">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
           Sign in
         </button>
         <p class="mt-5 mb-3 text-muted">© 2022</p>
@@ -55,10 +57,8 @@ export default {
       axios
         .get("am/get/"+this.logindata.email)
         .then((response) => {
-          console.log(response.data[0].password);
           if(response.data[0].password == this.logindata.password)
           {
-            console.log("Login Success")
             localStorage.setItem("am_token",true);
             localStorage.setItem("am_id",response.data[0]._id);
             this.$router.push('/am_home');

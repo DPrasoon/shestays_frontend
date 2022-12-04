@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1 style="text-align: center">Contact Us</h1>
-    <section class="pt-4 pb-5">
+    <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">Contact Us</h1>
+    <section class="pt-3 pb-5">
       <div class="container">
-        <form>
+        <form @submit.prevent="addQuery">
           <fieldset>
             <legend>For Everyone</legend>
             <div class="form-group">
-              <label for="txtfname">Name</label><br />
+              <label class="fw-bold" for="txtfname">Name</label><br />
               <input
                 type="text"
                 id="txtname"
@@ -20,7 +20,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtmail">Email</label><br />
+              <label class="fw-bold" for="txtmail">Email</label><br />
               <input
                 type="email"
                 id="txtmail"
@@ -34,7 +34,7 @@
             <br />
 
             <div class="form-group">
-              <label for="txtmsg">Message/Query</label><br />
+              <label class="fw-bold" for="txtmsg">Message/Query</label><br />
               <textarea
                 class="form-control"
                 placeholder="Write here"
@@ -51,7 +51,7 @@
           <fieldset>
             <legend>For Area Managers Only</legend>
             <div class="form-group">
-              <label for="txtid">Unique ID(AMs only)</label><br />
+              <label class="fw-bold" for="txtid">Unique ID(AMs only)</label><br />
               <input
                 type="text"
                 id="txtid"
@@ -63,7 +63,7 @@
             <br />
           </fieldset>
           <br />
-          <button type="submit" id="btnSubmit" @click="addQuery">Submit</button>
+          <button type="submit" id="btnSubmit">Submit</button>
           <button type="reset" id="btnReset">Reset</button>
         </form>
       </div>
@@ -90,8 +90,8 @@ export default {
     addQuery() {
       axios
         .post("common/contact", this.formData)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          alert("Thanks for messaging us. We will reach you back soon!");
         })
         .catch((error) => {
           console.log(error);
@@ -123,9 +123,7 @@ section {
     to right top,
     #051937,
     #004d7a,
-    #008793,
-    #00bf72,
-    #a8eb12
+    #008793
   );
 }
 
