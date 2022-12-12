@@ -8,11 +8,11 @@
     </button>
     <form @submit.prevent="updateData">
       <!-- Property Name Start  -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtpropname" class="col-form-label">Property Name</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="data.property_name"
             type="text"
@@ -22,7 +22,7 @@
             disabled
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="propNameHelpInline" class="form-text">
             Cannot be changed.
           </span>
@@ -30,11 +30,11 @@
       </div>
       <!-- Property Name End  -->
       <!-- Property Address Start  -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtAdd" class="col-form-label">Property Address</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="data.address"
             type="text"
@@ -44,7 +44,7 @@
             disabled
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="propAddHelpInline" class="form-text">
             Cannot be changed.
           </span>
@@ -52,13 +52,13 @@
       </div>
       <!-- Property Name End  -->
       <!-- Security Rating start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtSecurityRating" class="col-form-label"
             >Security Rating</label
           >
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="data.security_rating"
             type="text"
@@ -67,7 +67,7 @@
             aria-describedby="securityRatingHelpInline"
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="securityRatingHelpInline" class="form-text">
             Between (0.0 - 10.0)
           </span>
@@ -75,13 +75,13 @@
       </div>
       <!-- Security Rating End  -->
       <!-- Local Police Contact start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtPolicePhone" class="col-form-label"
             >Local Police Contact</label
           >
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="data.local_police_contact"
             type="text"
@@ -90,7 +90,7 @@
             aria-describedby="PolicePhoneHelpInline"
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="PolicePhoneHelpInline" class="form-text">
             All formats accepted
           </span>
@@ -98,13 +98,13 @@
       </div>
       <!-- Local Police Contact End  -->
       <!-- Local Tiffin Service Contact start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtTiffinPhone" class="col-form-label"
             >Local Tiffin Service Contact</label
           >
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="data.local_tiffin_service"
             type="text"
@@ -113,7 +113,7 @@
             aria-describedby="TiffinPhoneHelpInline"
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="TiffinPhoneHelpInline" class="form-text">
             All formats accepted
           </span>
@@ -121,13 +121,13 @@
       </div>
       <!-- Local Tiffin Service Contact End  -->
       <!-- Local Water Supply Service Contact start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtWaterPhone" class="col-form-label"
             >Local Water Supply Service Contact</label
           >
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="data.local_water_supply_service"
             type="text"
@@ -136,7 +136,7 @@
             aria-describedby="WaterPhoneHelpInline"
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="WaterPhoneHelpInline" class="form-text">
             All formats accepted
           </span>

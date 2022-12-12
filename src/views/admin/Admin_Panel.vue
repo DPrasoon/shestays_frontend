@@ -64,10 +64,15 @@
               this.$router.push('/admin_home');
             }
             else{
-              alert("Invalid Creds");
+              alert(
+              "Please check inputs. Either email and/or password is incorrect."
+            );
             }
           })
           .catch((error) => {
+            alert(
+              "Please check inputs. Either email and/or password is incorrect."
+            );
             console.log(error);
           });
       },

@@ -91,7 +91,6 @@ export default {
   },
   methods: {
     addFeedback() {
-      debugger
       axios
         .post("common/feedback", this.formData)
         .then(() => {

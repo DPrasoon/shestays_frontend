@@ -3,7 +3,7 @@
     <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">Contact Us</h1>
     <section class="pt-3 pb-5">
       <div class="container">
-        <form @submit="addQuery">
+        <form @submit.prevent="addQuery">
           <fieldset>
             <div class="form-group">
               <label class="fw-bold" for="txtfname">Name<span class="text-danger">*</span></label><br />
@@ -72,10 +72,12 @@ export default {
   methods: {
     addQuery() {
       this.formData.am_id = localStorage.getItem("am_id");
+      console.log(this.formData);
+      debugger
       axios
         .post("common/contact", this.formData)
         .then(() => {
-          alert("Thanks for messaging us. We will reach you back soon!");
+          alert("Thanks for contacting us. We will reach you back soon!");
         })
         .catch((error) => {
           console.log(error);

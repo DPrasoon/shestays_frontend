@@ -119,6 +119,9 @@ export default {
           }
         })
         .catch((error) => {
+          alert(
+              "Please check inputs. Either email and/or password is incorrect."
+            );
           console.log(error);
         });
     },
