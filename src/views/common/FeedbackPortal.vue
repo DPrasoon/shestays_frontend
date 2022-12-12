@@ -6,7 +6,7 @@
         <form @submit.prevent="addFeedback">
           <fieldset>
             <div class="form-group">
-              <label class = "fw-bold" for="txtfname">Name</label><br />
+              <label class = "fw-bold" for="txtfname">Name<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtname"
@@ -19,7 +19,7 @@
             <br />
 
             <div class="form-group">
-              <label class = "fw-bold" for="txtmail">Email</label><br />
+              <label class = "fw-bold" for="txtmail">Email<span class="text-danger">*</span></label><br />
               <input
                 type="email"
                 id="txtmail"
@@ -33,10 +33,10 @@
             <br />
 
             <div class="form-group">
-              <label class = "fw-bold" for="txtfeedback">Feedback</label><br />
+              <label class = "fw-bold" for="txtfeedback">Feedback<span class="text-danger">*</span></label><br />
               <textarea
                 class="form-control"
-                placeholder="Leave a comment here"
+                placeholder=" Leave a comment here"
                 id="feedback"
                 name="feedback"
                 v-model="formData.feedback"
@@ -46,14 +46,16 @@
             <br />
 
             <div class="form-group">
-              <label class = "fw-bold" for="txtmail">Rate Us</label><br />
+              <label class = "fw-bold" for="txtmail">Rate Us<span class="text-danger">*</span></label><br />
               <select
                 class="form-select"
                 aria-label="Default select example"
                 name="rating"
                 id="selectedRating"
+                v-model="formData.rating"
+                required
               >
-                <option selected>Select</option>
+                <option selected disabled value="">Select</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -89,7 +91,7 @@ export default {
   },
   methods: {
     addFeedback() {
-      this.formData.rating = Math.random()*5; //to be removed
+      debugger
       axios
         .post("common/feedback", this.formData)
         .then(() => {

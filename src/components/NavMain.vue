@@ -52,10 +52,15 @@
                 ><i class="bi bi-house-fill me-2"></i>AM Sign-In</router-link
               >
             </li>
+            <li class="nav-item rounded" v-if="userLoggedIn">
+              <router-link class="nav-link" aria-current="page" to="/user_home"
+                ><i class="bi bi-house-fill me-2"></i>User Home</router-link
+              >
+            </li>
           </ul>
         </div>
         <button
-          class="btn btn-outline-light text-light me-3"
+          class="btn btn-outline-light me-3"
           data-bs-toggle="modal"
           data-bs-target="#ModalForm"
         >
@@ -68,6 +73,9 @@
 <script>
 export default {
   name: "NavMain",
+  props:{
+    userLoggedIn: Boolean,
+  },
 };
 </script>
 <style scoped>

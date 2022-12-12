@@ -7,13 +7,35 @@
     <button @click="getData" class="btn btn-info mt-4 mb-4">
       Get My Details
     </button>
-    <form @submit.prevent="updateData">
+    <form @submit.prevent="updateData" class="container">
+      <!-- AM ID Start  -->
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
+          <label for="txtam_id" class="col-form-label">ID</label>
+        </div>
+        <div class="col-sm-4 col-md-2">
+          <input
+            v-model="am_id"
+            type="text"
+            id="txtam_id"
+            class="form-control"
+            aria-describedby="am_idlHelpInline"
+            disabled
+          />
+        </div>
+        <div class="col-sm-4 col-md-2">
+          <span id="am_idlHelpInline" class="form-text">
+            Your unique AM ID.
+          </span>
+        </div>
+      </div>
+      <!-- AM ID End  -->
       <!-- Email Start  -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtemail" class="col-form-label">Email</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="am_data.email"
             type="email"
@@ -23,7 +45,7 @@
             disabled
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="emailHelpInline" class="form-text">
             Cannot be changed.
           </span>
@@ -31,20 +53,21 @@
       </div>
       <!-- Email End  -->
       <!-- Phone start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2 ">
           <label for="txtphone" class="col-form-label">Phone Number</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2 ">
           <input
             v-model="am_data.phone"
             type="text"
             id="txtphone"
             class="form-control"
             aria-describedby="phoneHelpInline"
+            required
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="phoneHelpInline" class="form-text">
             All formats accepted
           </span>
@@ -52,20 +75,21 @@
       </div>
       <!-- Phone End  -->
       <!-- Password start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2 ">
           <label for="inputPassword" class="col-form-label">Password</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2 ">
           <input
             v-model="am_data.password"
             type="password"
             id="inputPassword"
             class="form-control"
             aria-describedby="passwordHelpInline"
+            required
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="passwordHelpInline" class="form-text">
             Must be 8-20 characters long.
           </span>
@@ -125,9 +149,6 @@ body{
 }
 .heading {
   text-decoration: underline;
-}
-.ml-23 {
-  margin-left: 23.5rem;
 }
 
 .am_heading{

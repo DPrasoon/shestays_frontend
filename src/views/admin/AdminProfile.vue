@@ -6,11 +6,11 @@
     </button>
     <form @submit.prevent="updateData">
       <!-- Email start  -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtemail" class="col-form-label">Email</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="admin_data.email"
             type="email"
@@ -20,7 +20,7 @@
             disabled
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="emailHelpInline" class="form-text">
             Cannot be changed.
           </span>
@@ -28,11 +28,11 @@
       </div>
       <!-- Email End  -->
       <!-- Phone start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="txtphone" class="col-form-label">Phone Number</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="admin_data.phone"
             type="text"
@@ -42,7 +42,7 @@
             required
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="phoneHelpInline" class="form-text">
             All formats accepted
           </span>
@@ -50,11 +50,11 @@
       </div>
       <!-- Phone End  -->
       <!-- Password start -->
-      <div class="row g-3 align-items-center mb-3 ml-23">
-        <div class="col-2">
+      <div class="row justify-content-center mb-3">
+        <div class="col-sm-4 col-md-2">
           <label for="inputPassword" class="col-form-label">Password</label>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <input
             v-model="admin_data.password"
             type="password"
@@ -64,7 +64,7 @@
             required
           />
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4 col-md-2">
           <span id="passwordHelpInline" class="form-text">
             Must be 8-20 characters long.
           </span>
@@ -113,6 +113,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

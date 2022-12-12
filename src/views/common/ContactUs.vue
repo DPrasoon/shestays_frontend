@@ -3,11 +3,10 @@
     <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">Contact Us</h1>
     <section class="pt-3 pb-5">
       <div class="container">
-        <form @submit.prevent="addQuery">
+        <form @submit="addQuery">
           <fieldset>
-            <legend>For Everyone</legend>
             <div class="form-group">
-              <label class="fw-bold" for="txtfname">Name</label><br />
+              <label class="fw-bold" for="txtfname">Name<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtname"
@@ -20,7 +19,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtmail">Email</label><br />
+              <label class="fw-bold" for="txtmail">Email<span class="text-danger">*</span></label><br />
               <input
                 type="email"
                 id="txtmail"
@@ -34,30 +33,14 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtmsg">Message/Query</label><br />
+              <label class="fw-bold" for="txtmsg">Message/Query<span class="text-danger">*</span></label><br />
               <textarea
                 class="form-control"
-                placeholder="Write here"
+                placeholder=" Write here"
                 id="msg"
                 name="msg"
-                v-model="formData.feedback"
+                v-model="formData.query"
                 required
-              />
-            </div>
-            <br />
-          </fieldset>
-          <br />
-
-          <fieldset>
-            <legend>For Area Managers Only</legend>
-            <div class="form-group">
-              <label class="fw-bold" for="txtid">Unique ID(AMs only)</label><br />
-              <input
-                type="text"
-                id="txtid"
-                name="txtid"
-                placeholder="Enter your unique ID"
-                v-model="formData.am_id"
               />
             </div>
             <br />
@@ -81,13 +64,14 @@ export default {
       formData: {
         name: "",
         email: "",
-        msg: "",
+        query: "",
         am_id: "",
       },
     };
   },
   methods: {
     addQuery() {
+      this.formData.am_id = localStorage.getItem("am_id");
       axios
         .post("common/contact", this.formData)
         .then(() => {
@@ -126,13 +110,6 @@ section {
     #008793
   );
 }
-
-legend {
-  font-size: 14px;
-  margin-left: 10px;
-  color: indianred;
-}
-
 .container {
   max-width: 600px;
   width: 90%;

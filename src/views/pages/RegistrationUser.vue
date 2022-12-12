@@ -8,7 +8,7 @@
             <legend>Personal Information</legend>
 
             <div class="form-group">
-              <label class="fw-bold" for="txtfname">First Name</label><br />
+              <label class="fw-bold" for="txtfname">First Name<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtfname"
@@ -35,7 +35,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtlname">Last Name</label><br />
+              <label class="fw-bold" for="txtlname">Last Name<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 v-model="formData.last_name"
@@ -49,7 +49,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="rdgender">Gender</label>
+              <label class="fw-bold" for="rdgender">Gender<span class="text-danger">*</span></label>
             </div>
             <br />
             <input
@@ -87,7 +87,7 @@
             <legend>Contact Information</legend>
 
             <div class="form-group">
-              <label class="fw-bold" for="txtmail">Email</label><br />
+              <label class="fw-bold" for="txtmail">Email<span class="text-danger">*</span></label><br />
               <input
                 type="email"
                 id="txtmail"
@@ -101,7 +101,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtphone">Phone Number</label><br />
+              <label class="fw-bold" for="txtphone">Phone Number<span class="text-danger">*</span></label><br />
               <input
                 type="number"
                 id="txtphone"
@@ -115,7 +115,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtaddr1">Address Line 1</label><br />
+              <label class="fw-bold" for="txtaddr1">Address Line 1<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtaddr1"
@@ -129,7 +129,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtaddr2">Address Line 2</label><br />
+              <label class="fw-bold" for="txtaddr2">Address Line 2<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtaddr2"
@@ -143,7 +143,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtaddr3">Address Line 3</label><br />
+              <label class="fw-bold" for="txtaddr3">Address Line 3<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 v-model="formData.address_line3"
@@ -169,7 +169,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtcity">City</label><br />
+              <label class="fw-bold" for="txtcity">City<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtcity"
@@ -183,7 +183,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtstate">State</label><br />
+              <label class="fw-bold" for="txtstate">State<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtstate"
@@ -197,7 +197,7 @@
             <br />
 
             <div class="form-group">
-              <label class="fw-bold" for="txtcountry">Country</label><br />
+              <label class="fw-bold" for="txtcountry">Country<span class="text-danger">*</span></label><br />
               <input
                 type="text"
                 id="txtcountry"

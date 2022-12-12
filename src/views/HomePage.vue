@@ -22,6 +22,7 @@
                       type="text"
                       placeholder="Enter city name..."
                       v-model="search_item"
+                      @keyup="onlyText()"
                     />
                   </div>
                   <div class="col-auto">
@@ -36,10 +37,9 @@
                 </div>
               </form>
               <h2 class="text-danger">We are present at</h2>
-              <h4 class="mb-5 text-light fw-bold">
-                Mumbai,&nbsp;&nbsp;Chennai,&nbsp;&nbsp;New
-                Delhi,&nbsp;&nbsp;Pune,&nbsp;&nbsp;Bengaluru
-              </h4>
+              <h5 class="mb-5 text-light fw-bold">
+                Mumbai,&nbsp;&nbsp;Chennai,&nbsp;&nbsp;New Delhi,&nbsp;&nbsp;Pune,&nbsp;&nbsp;Bengaluru
+              </h5>
             </div>
           </div>
         </div>
@@ -99,30 +99,32 @@
           <div class="search-result-item-body">
             <div class="row mt-2">
               <div class="col-sm-9">
-                  <span class="search-result-item-heading my-3 fw-bold fs-3">{{ item.property_name }}</span>
-                  <span class="fw-bold text-success ms-2 fs-5">
-                    ( Rating - {{ item.rating }})</span
-                  >
+                <span class="search-result-item-heading my-3 fw-bold fs-3">{{
+                  item.property_name
+                }}</span>
+                <span class="fw-bold text-success ms-2 fs-5">
+                  ( Rating - {{ item.rating }})</span
+                >
                 <h4 class="info mb-3">{{ item.address }}</h4>
                 <p class="description fw-bold">
                   {{ item.about }}
                 </p>
               </div>
               <div class="col-sm-3 text-align-center">
-                <a
-                  v-if="user_id"
-                  class="btn mt-4 mb-3"
-                  id="btnOwner"
-                  @click="getOwnerInfo(item._id)"
-                  >Get Owner Info</a
-                >
-                <h4 class="mt-sm my-2">
+                <h4 class="mt-sm my-3">
                   <span class="fw-bold text-danger"> Security Rating </span> -
                   {{ item.security_rating }}
                 </h4>
                 <a
+                  v-if="user_id"
+                  class="btn my-3"
+                  id="btnOwner"
+                  @click="getOwnerInfo(item._id)"
+                  >Get Owner Info</a
+                >
+                <a
                   v-if="am_id"
-                  class="btn btn-success my-3"
+                  class="btn my-3"
                   id="btnReview"
                   @click="addReview(item._id)"
                   >Add Review & Contact</a
@@ -175,9 +177,7 @@
                 <li class="text-start">
                   <h6>
                     <i class="fa-solid fa-bowl-food"></i>
-                    <span class="fw-bold">
-                      Local Tiffin Services</span
-                    >
+                    <span class="fw-bold"> Local Tiffin Services</span>
                     - {{ item.local_tiffin_service }}
                   </h6>
                 </li>
@@ -222,21 +222,39 @@ export default {
       user_id: "",
       item_id: "",
       am_id: "",
-      req_body:{},
+      req_body: {},
     };
   },
   methods: {
+    onlyText() {
+      this.search_item = this.search_item.replace("  ", " ");
+    },
     getData() {
+      //sanitizing and controlling input
+      var s_item = this.search_item.trim();
+      s_item = s_item.split(" ");
+      s_item = s_item.map((str) => {
+        if (str != "") {
+          str = str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+          return str;
+        }
+      });
+      s_item = s_item.join(" ");
+
+      //sending request
       axios
-        .get("accomodations/get/" + this.search_item)
+        .get("accomodations/get/" + s_item)
         .then((response) => {
           if (response.data.length != 0) {
             this.data = response.data;
             this.user_id = localStorage.getItem("user_id");
             this.am_id = localStorage.getItem("am_id");
-            alert("Sign-in to get Contact details.");
+            if (!this.user_id)
+              alert(
+                "Users are required to sign-in to get Owner Contact Details."
+              );
           } else {
-            alert("We are not currently present here. Exapanding Soon.");
+            alert("We are currently not present here. Exapanding Soon.");
           }
         })
         .catch((error) => {
@@ -244,8 +262,8 @@ export default {
         });
     },
     getOwnerInfo(property_id) {
-      this.req_body.user_id= this.user_id;
-      this.req_body.item_id= property_id;
+      this.req_body.user_id = this.user_id;
+      this.req_body.item_id = property_id;
       axios.post("am/ownerInfoReq", this.req_body);
       alert("Request Sent. You will be contacted soon.");
     },
@@ -277,10 +295,6 @@ export default {
   margin: auto;
 }
 
-.carousel-item {
-  height: 13rem;
-}
-
 .search-result-item {
   padding: 20px;
   background-color: #fff;
@@ -295,14 +309,16 @@ export default {
   display: table;
 }
 
-#btnOwner{
+#btnOwner,
+#btnReview {
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
-  background-image: linear-gradient(112deg,#ba5092,#df4976 98%) !important;
+  background-image: linear-gradient(112deg, #ba5092, #df4976 98%) !important;
 }
 
-#btnOwner:hover{
+#btnOwner:hover,
+#btnReview:hover {
   background: -webkit-linear-gradient(
     0deg,
     hsla(323, 91%, 51%, 1) 0%,
@@ -323,11 +339,8 @@ export default {
     display: inline-block;
     width: 200px;
   }
-}
-
-@media (max-width: 767px) {
-  .search-result-item {
-    max-height: 200px;
+  .carousel-item {
+    height: 13rem;
   }
 }
 
@@ -367,7 +380,7 @@ export default {
   );
 }
 
-.accordion-button{
+.accordion-button {
   border-top-left-radius: 0px !important;
   border-top-right-radius: 0px !important;
   border-bottom-left-radius: 4px;

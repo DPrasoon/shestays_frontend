@@ -32,7 +32,7 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-outline-light text-light me-3" @click="logout">
+        <button class="btn btn-outline-light me-3" @click="logout">
           Logout
         </button>
       </div>

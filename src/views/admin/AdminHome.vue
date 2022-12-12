@@ -9,7 +9,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Area Manager ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Message</th>

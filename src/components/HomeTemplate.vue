@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NavMain />
-    <router-view />
-    <SiteFooter/>
+    <NavMain :userLoggedIn="userLoggedIn"/>
+    <router-view :user_logout="user_logOut"/>
+    <SiteFooter />
     <!-- login modal  -->
     <div class="modal fade" id="ModalForm" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -55,7 +55,14 @@
               </div>
             </div>
             <div class="modal-footer mt-4">
-              <button type="submit" class="btn btn-success w-100">Login</button>
+              <button
+                type="submit"
+                class="btn w-100"
+                data-bs-dismiss="modal"
+                id="btnLogin"
+              >
+                Login
+              </button>
             </div>
             <p class="text-center">
               Don't have account, <a href="/registration_user">Signup</a>
@@ -70,16 +77,20 @@
 <script>
 import axios from "axios";
 import NavMain from "./NavMain.vue";
-import SiteFooter from './SiteFooter.vue';
+import SiteFooter from "./SiteFooter.vue";
 export default {
   name: "HomeTemplate",
   components: {
-    NavMain,SiteFooter
+    NavMain,
+    SiteFooter,
   },
   data() {
     return {
       error: "",
       logindata: {},
+      userLoggedIn: false,
+      amLoggedIn: false,
+      adminLoggedIn: false,
     };
   },
   methods: {
@@ -87,20 +98,66 @@ export default {
       axios
         .get("common/get/" + this.logindata.email)
         .then((response) => {
+          //verifying password
           if (response.data[0].password == this.logindata.password) {
             localStorage.setItem("user_token", true);
             localStorage.setItem("user_id", response.data[0]._id);
+
+            //setting user login flag true
+            this.userLoggedIn = true;
+
+            //resetting input fields
             this.logindata.email = "";
             this.logindata.password = "";
+
+            //redirecting to user home page
             this.$router.push("/user_home");
           } else {
-            alert("Invalid Creds");
+            alert(
+              "Please check inputs. Either email and/or password is incorrect."
+            );
           }
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    user_logOut() {
+      this.userLoggedIn = false;
+    },
   },
 };
 </script>
+
+<style scoped>
+#btnLogin {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: linear-gradient(112deg, #ba5092, #df4976 98%) !important;
+}
+
+#btnLogin:hover {
+  background: -webkit-linear-gradient(
+    0deg,
+    hsla(323, 91%, 51%, 1) 0%,
+    hsla(329, 20%, 24%, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: 0.1rem solid #df4976;
+}
+
+.modal-title{
+  background: -webkit-linear-gradient(
+    0deg,
+    hsla(323, 91%, 51%, 1) 0%,
+    hsla(329, 20%, 24%, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+</style>
