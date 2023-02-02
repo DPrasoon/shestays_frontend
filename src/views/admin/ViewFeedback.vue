@@ -1,16 +1,15 @@
 <template>
   <div>
-    <h1 class="fw-bold mt-4 mb-4">View Feedbacks</h1>
+    <h1 class="mt-3 mb-3 py-2 fw-bold bg-light">View Feedbacks</h1>
     <div class="container-fluid">
-      <button class="btn-lg btn btn-secondary mb-5" @click="getData">Load Feedback</button><br />
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Feedback</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Delete</th>
+            <th scope="col" class="fs-5 py-3">Name</th>
+            <th scope="col" class="fs-5 py-3">Email</th>
+            <th scope="col" class="fs-5 py-3">Feedback</th>
+            <th scope="col" class="fs-5 py-3">Rating</th>
+            <th scope="col" class="fs-5 py-3">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -38,16 +37,6 @@ export default {
     };
   },
   methods: {
-    getData() {
-      axios
-        .get("admin/view_feedback")
-        .then((response) => {
-          this.data = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     deleteFeedback(feedback_id){
       axios
           .delete("admin/delete_feedback/"+feedback_id)
@@ -60,6 +49,16 @@ export default {
           });
     }
   },
+  async mounted(){
+    await axios
+        .get("admin/view_feedback")
+        .then((response) => {
+          this.data = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 

@@ -1,9 +1,6 @@
 <template>
-  <div class="container">
-  <h1 class="mt-3 fw-bold text-dark">Admin Profile</h1>
-    <button @click="getData" class="btn btn-info mt-4 mb-4">
-      Get My Details
-    </button>
+  <div class="container-fluid">
+    <h1 class="mt-3 mb-5 py-2 fw-bold bg-light">Admin Profile</h1>
     <form @submit.prevent="updateData">
       <!-- Email start  -->
       <div class="row justify-content-center mb-3">
@@ -84,24 +81,14 @@ export default {
     return {
       error: "",
       admin_data: {},
-      admin_id:"",
+      admin_id: "",
     };
   },
   methods: {
-    getData() {
-      this.admin_id = localStorage.getItem("admin_id");
+    updateData() {
+      this.admin_data._id = this.admin_id;
       axios
-        .get("admin/get_admin/" + this.admin_id)
-        .then((response) => {
-          this.admin_data = response.data[0];
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },updateData(){
-    this.admin_data._id = this.admin_id;
-    axios
-        .put("admin/update",this.admin_data)
+        .put("admin/update", this.admin_data)
         .then((response) => {
           this.data = response.data;
           alert("Data updated successfully");
@@ -109,7 +96,18 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-  }
+    },
+  },
+  async mounted() {
+    this.admin_id = localStorage.getItem("admin_id");
+    await axios
+      .get("admin/get_admin/" + this.admin_id)
+      .then((response) => {
+        this.admin_data = response.data[0];
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>

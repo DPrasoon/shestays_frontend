@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="text-align: center">Add new Area Manager</h1>
+    <h1 class="text-center fw-bold py-2 mb-2">Add new Area Manager</h1>
     <section>
       <div class="container">
         <form @submit.prevent="addAM">

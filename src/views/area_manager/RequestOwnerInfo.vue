@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
-    <h1 class="fw-bold am_heading text-white bg-secondary">
+    <h1 class="fw-bold am_heading text-white bg-secondary py-2 mb-0">
       Area Manager Dashboard
     </h1>
-    <h1 class="mt-3 bg-light fw-bold">Info Requests</h1>
-    <button @click="getData" class="btn btn-outline-dark btn-lg fw-bold mt-4">Load Requests</button>
+    <h2 class="py-1 fw-bold text-dark bg-light mt-0">Info Requests</h2>
+    <!-- <button @click="getData" class="btn btn-outline-dark btn-lg fw-bold mt-4">Load Requests</button> -->
     <table class="table table-striped mt-4">
         <thead>
           <tr>
@@ -32,9 +32,8 @@ export default {
       data: [],
     };
   },
-  methods: {
-    getData() {
-      axios
+  async mounted(){
+    await axios
         .get("am/view_owner_info_requests")
         .then((response) => {
           this.data = response.data;
@@ -42,8 +41,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    },
-  },
+  }
 };
 </script>
 

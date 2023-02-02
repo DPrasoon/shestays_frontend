@@ -1,12 +1,9 @@
 <template>
   <div class="container-fluid">
-    <h1 class="fw-bold am_heading text-white bg-secondary">
+    <h1 class="fw-bold am_heading text-white bg-secondary py-2 mb-0">
       Area Manager Dashboard
     </h1>
-    <h1 class="heading fw-bold text-dark bg-light mt-0">My Profile</h1>
-    <button @click="getData" class="btn btn-info mt-4 mb-4">
-      Get My Details
-    </button>
+    <h2 class="py-1 fw-bold text-dark bg-light mt-0">My Profile</h2>
     <form @submit.prevent="updateData" class="container">
       <!-- AM ID Start  -->
       <div class="row justify-content-center mb-3">
@@ -113,17 +110,6 @@ export default {
     };
   },
   methods: {
-    getData() {
-      this.am_id = localStorage.getItem("am_id");
-      axios
-        .get("am/get_am_detail/" + this.am_id)
-        .then((response) => {
-          this.am_data = response.data[0];
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     updateData() {
       this.am_data._id = this.am_id;
       axios
@@ -137,6 +123,17 @@ export default {
         });
     },
   },
+  async mounted(){
+    this.am_id = localStorage.getItem("am_id");
+      await axios
+        .get("am/get_am_detail/" + this.am_id)
+        .then((response) => {
+          this.am_data = response.data[0];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 
@@ -146,9 +143,6 @@ body{
 }
 .container-fluid{
   padding: 0;
-}
-.heading {
-  text-decoration: underline;
 }
 
 .am_heading{

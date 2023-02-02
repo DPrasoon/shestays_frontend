@@ -3,9 +3,6 @@
     <h1 class="heading fw-bold text-dark bg-light">
       Add Area Contacts & Safety Review
     </h1>
-    <button @click="getData" class="btn btn-info mt-4 mb-4">
-      Load Property Details
-    </button>
     <form @submit.prevent="updateData">
       <!-- Property Name Start  -->
       <div class="row justify-content-center mb-3">
@@ -166,18 +163,6 @@ export default {
     };
   },
   methods: {
-    getData() {
-      this.item_id = localStorage.getItem("item_id");
-
-      axios
-        .get("accomodations/get_property_details/" + this.item_id)
-        .then((response) => {
-          this.data = response.data[0];
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     updateData() {
       this.data._id = this.item_id;
       axios
@@ -193,6 +178,18 @@ export default {
         });
     },
   },
+  async mounted(){
+    this.item_id = localStorage.getItem("item_id");
+
+      await axios
+        .get("accomodations/get_property_details/" + this.item_id)
+        .then((response) => {
+          this.data = response.data[0];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 

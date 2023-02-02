@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1 class="fw-bold  mb-4 text-white bg-secondary">
+    <h1 class="fw-bold py-2 mb-4 text-white bg-secondary">
       Admin Dashboard
     </h1>
     <div class="container-fluid">
       <h2 class="fw-bold mt-1 mb-2">Queries</h2>
-      <button class="btn btn btn-secondary mb-5"  @click="getData">Load Queries and Messages</button><br />
       <table class="table">
         <thead>
           <tr>
@@ -38,9 +37,8 @@ export default {
       data: [],
     };
   },
-  methods: {
-    getData() {
-      axios
+  async mounted(){
+    await axios
         .get("admin/view_queries")
         .then((response) => {
           this.data = response.data;
@@ -48,8 +46,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    },
-  },
+  }
 };
 </script>
 

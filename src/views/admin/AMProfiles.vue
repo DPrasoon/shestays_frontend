@@ -1,17 +1,16 @@
 <template>
   <div>
-    <h1 class="fw-bold mt-4 mb-4">View Area Manager Profiles</h1>
+    <h1 class="mt-3 mb-3 py-2 fw-bold bg-light">View Area Manager Profiles</h1>
     <div class="container-fluid">
-      <button class="btn-lg btn btn-secondary mb-5" @click="getData">Load AM Profiles</button><br />
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">City</th>
-            <th scope="col">Remove AM</th>
+            <th scope="col" class="fs-5 py-3">ID</th>
+            <th scope="col" class="fs-5 py-3">Name</th>
+            <th scope="col" class="fs-5 py-3">Email</th>
+            <th scope="col" class="fs-5 py-3">Phone</th>
+            <th scope="col" class="fs-5 py-3">City</th>
+            <th scope="col" class="fs-5 py-3">Remove AM</th>
           </tr>
         </thead>
         <tbody>
@@ -40,16 +39,6 @@ export default {
     };
   },
   methods: {
-    getData() {
-      axios
-        .get("admin/view_am_profiles")
-        .then((response) => {
-          this.data = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     deleteAM(am_id){
       axios
           .delete("admin/delete_am/"+am_id)
@@ -63,6 +52,16 @@ export default {
           });
     }
   },
+  async mounted(){
+    await axios
+        .get("admin/view_am_profiles")
+        .then((response) => {
+          this.data = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 

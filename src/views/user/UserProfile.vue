@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="heading fw-bold text-dark">User Profile</h1>
+    <h1 class="heading fw-bold py-4 text-dark">User Profile</h1>
     <form @submit.prevent="updateData" class="container">
       <!-- Email start  -->
       <div class="row justify-content-center mb-3">
@@ -63,7 +63,7 @@
         </div>
         <div class="col-sm-4 col-md-2">
           <span id="passwordHelpInline" class="form-text">
-            Must be 8-20 characters long.
+            Create a strong password containing letters, digits, and special characters.
           </span>
         </div>
       </div>

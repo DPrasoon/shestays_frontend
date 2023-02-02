@@ -1,18 +1,17 @@
 <template>
   <div>
-    <h1 class="fw-bold mt-4 mb-4">View User Profiles</h1>
+    <h1 class="mt-3 mb-3 py-2 fw-bold bg-light">View User Profiles</h1>
     <div class="container-fluid">
-      <button class="btn-lg btn btn-secondary mb-5" @click="getData">Load User Profiles</button><br />
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">City</th>
-            <th scope="col">Full Address</th>
-            <th scope="col">Delete</th>
+            <th scope="col" class="fs-5 py-3">Name</th>
+            <th scope="col" class="fs-5 py-3">Gender</th>
+            <th scope="col" class="fs-5 py-3">Email</th>
+            <th scope="col" class="fs-5 py-3">Phone</th>
+            <th scope="col" class="fs-5 py-3">City</th>
+            <th scope="col" class="fs-5 py-3">Full Address</th>
+            <th scope="col" class="fs-5 py-3">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -42,16 +41,7 @@ export default {
     };
   },
   methods: {
-    getData() {
-      axios
-        .get("admin/view_user_profiles")
-        .then((response) => {
-          this.data = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },deleteUser(user_id){
+    deleteUser(user_id){
       axios
           .delete("admin/delete_user/"+user_id)
           .then((response) => {
@@ -63,6 +53,16 @@ export default {
           });
     }
   },
+  async mounted(){
+    await axios
+        .get("admin/view_user_profiles")
+        .then((response) => {
+          this.data = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 
