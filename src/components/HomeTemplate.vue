@@ -104,7 +104,7 @@ export default {
             localStorage.setItem("user_id", response.data[0]._id);
 
             //setting user login flag true
-            this.userLoggedIn = true;
+            // this.userLoggedIn = true;
 
             //resetting input fields
             this.logindata.email = "";
@@ -112,6 +112,7 @@ export default {
 
             //redirecting to user home page
             this.$router.push("/user_home");
+            location.reload();
           } else {
             alert(
               "Please check inputs. Either email and/or password is incorrect."

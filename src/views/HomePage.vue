@@ -31,14 +31,15 @@
                       id="submitButton"
                       type="submit"
                     >
-                      Submit
+                      Search
                     </button>
                   </div>
                 </div>
               </form>
               <h2 class="text-danger">We are present at</h2>
               <h5 class="mb-5 text-light fw-bold">
-                Mumbai,&nbsp;&nbsp;Chennai,&nbsp;&nbsp;New Delhi,&nbsp;&nbsp;Pune,&nbsp;&nbsp;Bengaluru
+                Mumbai,&nbsp;&nbsp;Chennai,&nbsp;&nbsp;New
+                Delhi,&nbsp;&nbsp;Pune,&nbsp;&nbsp;Bengaluru
               </h5>
             </div>
           </div>
@@ -61,17 +62,33 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-inner rounded-start">
-            <div class="carousel-item active">
-              <img :src="item.image1" class="w-100 d-block" alt="..." />
+            <div class="carousel-item mini-carousel active">
+              <img
+                :src="item.image1"
+                class="w-100 d-block"
+                alt="property_image 1"
+              />
             </div>
-            <div class="carousel-item">
-              <img :src="item.image2" class="w-100 d-block" alt="..." />
+            <div class="carousel-item mini-carousel">
+              <img
+                :src="item.image2"
+                class="w-100 d-block"
+                alt="property_image 2"
+              />
             </div>
-            <div class="carousel-item">
-              <img :src="item.image3" class="w-100 d-block" alt="..." />
+            <div class="carousel-item mini-carousel">
+              <img
+                :src="item.image3"
+                class="w-100 d-block"
+                alt="property_image 3"
+              />
             </div>
-            <div class="carousel-item">
-              <img :src="item.image4" class="w-100 d-block" alt="..." />
+            <div class="carousel-item mini-carousel">
+              <img
+                :src="item.image4"
+                class="w-100 d-block"
+                alt="property_image 4"
+              />
             </div>
           </div>
           <button
@@ -207,13 +224,126 @@
       </div>
     </div>
     <!-- Search Results End -->
+
+    <!-- Main Carousel Start -->
+    <h1 class="py-3 fw-bold mt-3 txt-shadow">For Every Need</h1>
+    <div
+      id="mainCarousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#mainCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#mainCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#mainCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#mainCarousel"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
+      </div>
+      <div class="carousel-inner main-carousel-inner shadow-lg">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <img src="../assets/sittingArea.jpg" class="d-block" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="../assets/couch.jpg" class="d-block" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="../assets/workHall.jpg" class="d-block" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="../assets/kitchen.jpg" class="d-block" alt="..." />
+        </div>
+      </div>
+    </div>
+    <!-- Main Carousel End-->
+
+    <!-- Services Start -->
+    <div class="container-fluid mt-4">
+      <h1 class="py-3 fw-bold txt-shadow">Services</h1>
+      <div class="row mx-2">
+        <div class="col-3">
+          <div class="card ms-3 me-3">
+            <div class="card-body shadow-lg">
+              <h5 class="card-title">Search Accommodations</h5>
+              <hr class="m-0">
+              <p class="card-text mt-2">
+                Anyone can search for accommodations in different cities. To get
+                Property Owner's contact details, one must register and login.
+              </p>
+              <a href="#" class="btn btn-info">Search</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card ms-3 me-3">
+            <div class="card-body shadow-lg">
+              <h5 class="card-title">Property Showcase</h5>
+              <hr class="m-0">
+              <p class="card-text mt-2">
+                To showcase your property on our platform, email the details to
+                us. We will get back to you for further process.
+              </p>
+              <a href="mailto:admin@shestays.com" class="btn btn-info">Email Us</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card ms-3 me-3">
+            <div class="card-body shadow-lg">
+              <h5 class="card-title">Contact Us</h5>
+              <hr class="m-0">
+              <p class="card-text mt-2">
+                Have queries? Want to give suggestions? Contact us through the
+                given form. Just click the button below.
+              </p>
+              <router-link to="/contact" class="btn btn-info">Fill the form</router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card ms-3 me-3">
+            <div class="card-body shadow-lg">
+              <h5 class="card-title">Feedback</h5>
+              <hr class="m-0">
+              <p class="card-text mt-2">
+                Help us to improve ourselves by providing your valuable
+                feedback. This helps us to serve you better. We are looking
+                forward to it.
+              </p>
+              <router-link to="/feedback" class="btn btn-info">Go for it!</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services End -->
   </div>
 </template>
   
   <script>
 import axios from "axios";
 export default {
-  name: "SearchPage",
+  name: "HomePage",
   data() {
     return {
       error: "",
@@ -291,7 +421,7 @@ export default {
   display: flex;
   float: left;
 }
-.carousel-inner > .carousel-item > img {
+.carousel-inner > .mini-carousel > img {
   margin: auto;
 }
 
@@ -318,7 +448,7 @@ export default {
 }
 
 #btnOwner:hover,
-#btnReview:hover {
+#btnReview:hover{
   background: -webkit-linear-gradient(
     0deg,
     hsla(323, 91%, 51%, 1) 0%,
@@ -333,17 +463,6 @@ export default {
 .search-result-item:after {
   clear: both;
 }
-
-@media (min-width: 768px) {
-  .search-result-item {
-    display: inline-block;
-    width: 200px;
-  }
-  .carousel-item {
-    height: 13rem;
-  }
-}
-
 .search-result-item {
   max-width: 100%;
 }
@@ -430,6 +549,24 @@ header.masthead {
   .search-result-item-body {
     margin-left: 50px;
   }
+
+  .search-result-item-heading {
+    margin: 0;
+  }
+
+  .search-result-item {
+    display: inline-block;
+    width: 200px;
+  }
+  .mini-carousel {
+    height: 13rem;
+  }
+
+  .main-carousel-inner {
+    max-height: 30rem;
+    width: max-content;
+    margin: 0rem 15rem;
+  }
 }
 
 .search-result-item-heading {
@@ -440,9 +577,11 @@ header.masthead {
   color: #555;
 }
 
-@media (min-width: 768px) {
-  .search-result-item-heading {
-    margin: 0;
-  }
+.card-title{
+  font-weight: 700 !important;
+}
+
+.txt-shadow{
+  text-shadow: 0px 2px 2px rgba(0,0,0,0.4);
 }
 </style>

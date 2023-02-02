@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">Registration Form</h1>
+    <h1 class="mt-5 pt-4 pb-2 text-center fw-bold">Registration Form</h1>
     <section class="pb-5 pt-3">
       <div class="container">
         <form @submit.prevent="addUser">
@@ -261,7 +261,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          alert("Invalid credentials.");
+          alert("This email is already registered.");
         });
     },
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0 mt-5 pt-3">
     <div class="container-fluid">
-      <h1 class="fw-bold bg-white">About Us</h1>
+      <h1 class="fw-bold bg-white pt-2 pb-2">About Us</h1>
       <section>
         <h3 class="section-heading">Introduction</h3>
         <h6 class="section-body">

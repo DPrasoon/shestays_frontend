@@ -1,9 +1,6 @@
 <template>
   <div class="container">
     <h1 class="heading fw-bold text-dark">User Profile</h1>
-    <button @click="getData" class="btn btn-info mt-4 mb-4">
-      Get My Details
-    </button>
     <form @submit.prevent="updateData" class="container">
       <!-- Email start  -->
       <div class="row justify-content-center mb-3">
@@ -73,10 +70,6 @@
       <!-- Password End  -->
       <button class="btn btn-lg btn-secondary" type="submit">Update</button>
     </form>
-    <hr />
-    <button class="btn btn-outline-danger btn-lg" @click="logout">
-      Logout
-    </button>
   </div>
 </template>
 
@@ -92,17 +85,6 @@ export default {
     };
   },
   methods: {
-    getData() {
-      this.user_id = localStorage.getItem("user_id");
-      axios
-        .get("common/get_user_detail/" + this.user_id)
-        .then((response) => {
-          this.user_data = response.data[0];
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     updateData() {
       this.user_data._id = this.user_id;
       axios
@@ -115,12 +97,18 @@ export default {
           console.log(error);
         });
     },
-    logout() {
-      localStorage.removeItem("user_token");
-      localStorage.removeItem("user_id");
-      this.$router.push("/");
-    },
   },
+  async mounted(){
+      this.user_id = localStorage.getItem("user_id");
+      await axios
+        .get("common/get_user_detail/" + this.user_id)
+        .then((response) => {
+          this.user_data = response.data[0];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 

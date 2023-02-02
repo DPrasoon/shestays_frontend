@@ -52,7 +52,7 @@
                 ><i class="bi bi-house-fill me-2"></i>AM Sign-In</router-link
               >
             </li>
-            <li class="nav-item rounded" v-if="userLoggedIn">
+            <li class="nav-item rounded" v-if="userLoginStatus">
               <router-link class="nav-link" aria-current="page" to="/user_home"
                 ><i class="bi bi-house-fill me-2"></i>User Home</router-link
               >
@@ -61,8 +61,16 @@
         </div>
         <button
           class="btn btn-outline-light me-3"
+          @click="logout"
+          v-if="userLoginStatus"
+        >
+          Logout
+        </button>
+        <button
+          class="btn btn-outline-light me-3"
           data-bs-toggle="modal"
           data-bs-target="#ModalForm"
+          v-else
         >
           Login
         </button>
@@ -73,8 +81,21 @@
 <script>
 export default {
   name: "NavMain",
-  props:{
-    userLoggedIn: Boolean,
+  data() {
+    return{
+      userLoginStatus: false,
+    }
+  },
+  mounted() {
+    this.userLoginStatus = localStorage.getItem("user_token");
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("user_token");
+      localStorage.removeItem("user_id");
+      this.$router.push("/");
+      location.reload();
+    },
   },
 };
 </script>

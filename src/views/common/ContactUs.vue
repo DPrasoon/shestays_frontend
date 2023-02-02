@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mt-5 pt-3 pb-1 text-center fw-bold">Contact Us</h1>
+    <h1 class="mt-5 pt-4 pb-2 text-center fw-bold">Contact Us</h1>
     <section class="pt-3 pb-5">
       <div class="container">
         <form @submit.prevent="addQuery">
