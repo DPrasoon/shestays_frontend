@@ -136,7 +136,7 @@
                   v-if="user_id"
                   class="btn my-3"
                   id="btnOwner"
-                  @click="getOwnerInfo(item._id)"
+                  @click="getOwnerInfo(item._id, item.property_name)"
                   >Get Owner Info</a
                 >
                 <a
@@ -279,7 +279,7 @@
 
     <!-- Services Start -->
     <div class="container-fluid mt-4">
-      <h1 class="py-3 fw-bold txt-shadow">Services</h1>
+      <h1 class="py-5 txt-shadow" id="services">Services</h1>
       <div class="row mx-2">
         <div class="col-3">
           <div class="card ms-3 me-3">
@@ -351,6 +351,7 @@ export default {
       search_item: "",
       user_id: "",
       item_id: "",
+      user_email:"",
       am_id: "",
       req_body: {},
     };
@@ -379,6 +380,7 @@ export default {
             this.data = response.data;
             this.user_id = localStorage.getItem("user_id");
             this.am_id = localStorage.getItem("am_id");
+            this.user_email = localStorage.getItem("user_email");
             if (!this.user_id)
               alert(
                 "Users are required to sign-in to get Owner Contact Details."
@@ -391,9 +393,11 @@ export default {
           console.log(error);
         });
     },
-    getOwnerInfo(property_id) {
+    getOwnerInfo(property_id, property_name) {
       this.req_body.user_id = this.user_id;
       this.req_body.item_id = property_id;
+      this.req_body.user_email = this.user_email;
+      this.req_body.item_name = property_name;
       axios.post("am/ownerInfoReq", this.req_body);
       alert("Request Sent. You will be contacted soon.");
     },
@@ -583,5 +587,10 @@ header.masthead {
 
 .txt-shadow{
   text-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+}
+
+#services{
+letter-spacing: 0.5rem;
+font-weight: 900;
 }
 </style>

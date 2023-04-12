@@ -93,6 +93,7 @@ export default {
     logout() {
       localStorage.removeItem("user_token");
       localStorage.removeItem("user_id");
+      localStorage.removeItem("user_email");
       this.$router.push("/");
       location.reload();
     },
