@@ -46,6 +46,7 @@ export default {
             console.log(response.data);
             this.data = response.data;
             alert("Area Manager removed from Database.");
+            location.reload();
           })
           .catch((error) => {
             console.log(error);

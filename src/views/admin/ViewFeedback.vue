@@ -43,6 +43,7 @@ export default {
           .then((response) => {
             this.data = response.data;
             alert("Feedback deleted.");
+            location.reload();
           })
           .catch((error) => {
             console.log(error);

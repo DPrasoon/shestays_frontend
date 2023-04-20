@@ -104,9 +104,6 @@ export default {
             localStorage.setItem("user_id", response.data[0]._id);
             localStorage.setItem("user_email", this.logindata.email);
 
-            //setting user login flag true
-            // this.userLoggedIn = true;
-
             //resetting input fields
             this.logindata.email = "";
             this.logindata.password = "";
